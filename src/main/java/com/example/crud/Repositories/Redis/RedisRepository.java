@@ -15,7 +15,7 @@ public interface RedisRepository {
 
     Double getElementScore(String key, String value);
 
-    //higher score , higher rank
+    //single element : higher score , higher rank
     Long getReverseRank(String key, String value);
 
     Set<String> getTopElement(String key, int start, int end);
