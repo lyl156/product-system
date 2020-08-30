@@ -5,9 +5,11 @@ import org.springframework.data.redis.core.ZSetOperations;
 import java.util.Set;
 
 public interface RankService {
-    void addScore(String key, String value, double score);
+    void addScore(String value, double score);
 
-    Set<String> getTopRank(String key, int start, int end);
+    void removeScore(String value);
+
+    Set<String> getTopRank();
 
     Set<ZSetOperations.TypedTuple<String>> getTopRankWithScore(String key, int start, int end);
 }

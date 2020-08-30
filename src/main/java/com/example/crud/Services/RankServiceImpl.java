@@ -23,19 +23,29 @@ public class RankServiceImpl implements RankService {
     // value : product name
     // score : product price
     @Override
-    public void addScore(String key, String value, double score) {
+    public void addScore(String value, double score) {
         redisRepository.add(RANK_LIST, value, score);
         logger.info("add in Redis element : %s, price : %d", value, score);
     }
 
     // return top 3 expensive product
     @Override
-    public Set<String> getTopRank(String key, int start, int end) {
-        return redisRepository.getTopElement(RANK_LIST, 0, 3);
+    public Set<String> getTopRank() {
+        return redisRepository.getTopElement(RANK_LIST, 0, 2);
     }
+//    @Override
+//    public Set<String> getTopRank(String key, int start, int end) {
+//        return redisRepository.getTopElement(RANK_LIST, 0, 2);
+//    }
 
     @Override
     public Set<ZSetOperations.TypedTuple<String>> getTopRankWithScore(String key, int start, int end) {
-        return redisRepository.getTopElementWithScore(RANK_LIST, 0, 3);
+        return redisRepository.getTopElementWithScore(RANK_LIST, 0, 2);
+    }
+
+    @Override
+    public void removeScore(String value) {
+        Long cnt = redisRepository.remove(RANK_LIST, value);
+        logger.info("delete " + cnt + " element");
     }
 }

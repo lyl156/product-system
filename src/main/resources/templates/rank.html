@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Boot CRUD Example</title>
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #sets.isEmpty(ranks)}">
+        <h2>Rank List</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+            </tr>
+            <tr th:each="rank : ${ranks}">
+                <td th:text="${rank}">product name</td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+</body>
+</html>

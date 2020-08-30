@@ -9,7 +9,7 @@ public interface RedisRepository {
     //https://docs.spring.io/spring-data/redis/docs/current/api/org/springframework/data/redis/core/ZSetOperations.html#remove-K-java.lang.Object...-
     void add(String key, String value, double score);
 
-    void remove(String key, String value);
+    Long remove(String key, String value);
 
     Long size(String key);
 

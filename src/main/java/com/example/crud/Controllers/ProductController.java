@@ -1,7 +1,9 @@
 package com.example.crud.Controllers;
 
 import com.example.crud.Entities.Product;
+import com.example.crud.Repositories.Redis.RedisRepository;
 import com.example.crud.Services.ProductService;
+import com.example.crud.Services.RankService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,9 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ProductController {
     private ProductService productService;
+    private RankService rankService;
 
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService, RankService rankService) {
         this.productService = productService;
+        this.rankService = rankService;
     }
 
     @RequestMapping("product/{Id}")
@@ -42,6 +46,7 @@ public class ProductController {
     //    after create product page   post:(non idempotent)  put: idempotent
     @RequestMapping(value = "product", method = RequestMethod.POST)
     public String saveProduct(Product product) {
+        rankService.addScore(product.getName(), product.getPrice());
         productService.saveProduct(product);
         return "redirect:/product/" + product.getId();
     }
@@ -54,6 +59,9 @@ public class ProductController {
 
     @RequestMapping("product/delete/{Id}")
     public String delete(@PathVariable Long Id) {
+        Product product = productService.getProductById(Id);
+        rankService.removeScore(product.getName());
+
         productService.deleteProduct(Id);
         //redirect to index(home page)
         return "redirect:/";

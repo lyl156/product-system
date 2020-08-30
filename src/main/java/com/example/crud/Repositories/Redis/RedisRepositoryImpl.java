@@ -20,9 +20,9 @@ public class RedisRepositoryImpl implements RedisRepository {
     }
 
     @Override
-    public void remove(String key, String value) {
+    public Long remove(String key, String value) {
         //return number of removed elements
-        redisTemplate.opsForZSet().remove(key, value);
+        return redisTemplate.opsForZSet().remove(key, value);
     }
 
     @Override
