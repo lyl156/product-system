@@ -1,13 +1,11 @@
 package com.example.crud.Controllers;
 
 import com.example.crud.Entities.Product;
-import com.example.crud.Repositories.Redis.RedisRepository;
-import com.example.crud.Services.ProductService;
-import com.example.crud.Services.RankService;
+import com.example.crud.Services.Product.ProductService;
+import com.example.crud.Services.Rank.RankService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,7 +23,7 @@ public class ProductController {
 
     @RequestMapping("product/{Id}")
     public ModelAndView showProductById(@PathVariable Long Id, Model model) {
-        return new ModelAndView("showProductById", "product", productService.getProductById(Id));
+        return new ModelAndView("product/showProductById", "product", productService.getProductById(Id));
 //        model.addAttribute("product", productService.getProductById(Id));
 //        return "showProductById";
     }
@@ -33,14 +31,14 @@ public class ProductController {
     @RequestMapping(value = "products", method = RequestMethod.GET)
     public String getAllProducts(Model model) {
         model.addAttribute("products", productService.getAllProducts());
-        return "products";
+        return "product/products";
     }
 
     //    create product page
     @RequestMapping("product/new")
     public String newProduct(Model model) {
         model.addAttribute("product", new Product());
-        return "productForm";
+        return "product/productForm";
     }
 
     //    after create product page   post:(non idempotent)  put: idempotent
@@ -54,7 +52,7 @@ public class ProductController {
     @RequestMapping("product/edit/{Id}")
     public String edit(@PathVariable Long Id, Model model) {
         model.addAttribute("product", productService.getProductById(Id));
-        return "productForm";
+        return "product/productForm";
     }
 
     @RequestMapping("product/delete/{Id}")

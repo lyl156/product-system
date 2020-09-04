@@ -1,11 +1,10 @@
-package com.example.crud.Services;
+package com.example.crud.Services.Product;
 
 import com.example.crud.Entities.Product;
 import com.example.crud.Exceptions.NotFoundException;
 import com.example.crud.Repositories.ProductRepository;
+import com.example.crud.Services.Product.ProductService;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService {

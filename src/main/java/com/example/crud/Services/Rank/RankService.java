@@ -1,4 +1,4 @@
-package com.example.crud.Services;
+package com.example.crud.Services.Rank;
 
 import org.springframework.data.redis.core.ZSetOperations;
 

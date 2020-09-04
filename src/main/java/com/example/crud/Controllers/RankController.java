@@ -1,7 +1,6 @@
 package com.example.crud.Controllers;
 
-import com.example.crud.Services.ProductService;
-import com.example.crud.Services.RankService;
+import com.example.crud.Services.Rank.RankService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,6 +1,6 @@
 package com.example.crud;
 
-import com.example.crud.Services.RankService;
+import com.example.crud.Services.Rank.RankService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

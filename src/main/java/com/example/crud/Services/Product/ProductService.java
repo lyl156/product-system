@@ -1,4 +1,4 @@
-package com.example.crud.Services;
+package com.example.crud.Services.Product;
 
 import com.example.crud.Entities.Product;
 

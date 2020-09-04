@@ -1,4 +1,4 @@
-package com.example.crud.Services;
+package com.example.crud.Services.Rank;
 
 import com.example.crud.Repositories.Redis.RedisRepository;
 import lombok.extern.slf4j.Slf4j;
