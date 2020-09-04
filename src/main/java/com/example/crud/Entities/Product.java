@@ -3,6 +3,8 @@ package com.example.crud.Entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -15,4 +17,7 @@ public class Product {
     private Long productId;
     private String name;
     private Long price;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    private List<OrderProduct> orderProducts = new ArrayList<>();
 }

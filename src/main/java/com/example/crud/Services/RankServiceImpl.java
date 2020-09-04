@@ -25,7 +25,12 @@ public class RankServiceImpl implements RankService {
     @Override
     public void addScore(String value, double score) {
         redisRepository.add(RANK_LIST, value, score);
-        logger.info("add in Redis element : %s, price : %d", value, score);
+        logger.info("add in Redis element :" + value + "price :" + score);
+    }
+
+    @Override
+    public Long removeAllScore() {
+        return redisRepository.removeAll(RANK_LIST);
     }
 
     // return top 3 expensive product

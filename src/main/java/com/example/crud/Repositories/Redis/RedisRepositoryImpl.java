@@ -26,6 +26,11 @@ public class RedisRepositoryImpl implements RedisRepository {
     }
 
     @Override
+    public Long removeAll(String key) {
+        return redisTemplate.opsForZSet().removeRange(key, 0, -1);
+    }
+
+    @Override
     public Long size(String key) {
         return redisTemplate.opsForZSet().zCard(key);
     }

@@ -11,6 +11,8 @@ public interface RedisRepository {
 
     Long remove(String key, String value);
 
+    Long removeAll(String key);
+
     Long size(String key);
 
     Double getElementScore(String key, String value);

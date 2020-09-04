@@ -9,6 +9,8 @@ public interface RankService {
 
     void removeScore(String value);
 
+    Long removeAllScore();
+
     Set<String> getTopRank();
 
     Set<ZSetOperations.TypedTuple<String>> getTopRankWithScore(String key, int start, int end);
