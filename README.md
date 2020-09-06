@@ -1,5 +1,19 @@
 # Product-system  
 Spring-CRUD-product-system is web app demonstrating CRUD operations.  
+## Performance  
+- Implement Ranking list with Redis.  
+When ranking stored in DB change frequently,
+the number of access to DB is huge. Cache can reduce access burden of DB.  
+- message with Kafka 
+## Availability  
+- stateless service failover through load balance
+- CI/CD  
+- Data/ DB backup  
+- Monitor and manage data  
+## Scalability  
+- server load balance  
+## Security  
+- Prevent XSS with Filter
 ## Package  
 This web app is based on :  
 - Maven  
