@@ -52,7 +52,7 @@ public class ProductController {
     @RequestMapping("product/edit/{Id}")
     public String edit(@PathVariable Long Id, Model model) {
         model.addAttribute("product", productService.getProductById(Id));
-        return "product/productForm";
+        return "/product/productForm";
     }
 
     @RequestMapping("product/delete/{Id}")
