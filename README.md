@@ -13,7 +13,8 @@ the number of access to DB is huge. Cache can reduce access burden of DB.
 ## Scalability  
 - server load balance  
 ## Security  
-- Prevent XSS with Filter
+- XSS  
+ Prevent XSS with filter and HttpServletRequestWrapper
 ## Package  
 This web app is based on :  
 - Maven  
